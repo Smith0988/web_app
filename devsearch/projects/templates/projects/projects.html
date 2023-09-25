@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+<P> Hello you are in {{page}} page </P>
+
+{% if number > 10 %}
+<p>Number is greater than 10</p>
+{% elif number == 10 %}
+<p>Number is 10</p>
+{% else %}
+<p> Number is less than 10</p>
+{% endif %}
+<hr>
+<h1>Projects</h1>
+<ul>
+    {% for project in projects  %}
+      <li> Title:<a href = "/project/{{project.id}}" >{{project.title}} </a> --- {{project.description}}</li>
+    {% endfor %}
+
+
+</ul>
+
+{% endblock content %}
