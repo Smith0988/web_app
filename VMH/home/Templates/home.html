@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{% static 'images/logo.PNG' %}" alt="Logo" />
+        </div>
+        <div class="header-text">
+            <h1 style="color: #FF5733;">VMH-N7</h1>
+        </div>
+    </header>
+
+    <section class="buttons">
+        <button class="custom-button">Button 1</button>
+        <button class="custom-button">Button 2</button>
+        <button class="custom-button">Button 3</button>
+        <button class="custom-button">Button 4</button>
+        <button class="custom-button">Button 5</button>
+        <button class="custom-button">Button 6</button>
+        <button class="custom-button">Button 7</button>
+    </section>
+
+    <section class="search">
+        <label for="searchText">Search Text</label>
+        <input type="text" id="searchText" name="searchText">
+        <button id="clearButton">Clear</button>
+    </section>
+
+    <section class="result">
+        <label for="resultText">Result</label>
+        <button id="copyButton">Copy Result Text</button>
+        <input type="checkbox" id="findAllCheckbox" name="findAllCheckbox">
+    </section>
+
+    <section class="result-text">
+        <textarea id="resultText" name="resultText"></textarea>
+    </section>
+</body>
+</html>
