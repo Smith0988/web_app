@@ -3,11 +3,11 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background-color: #f0f0f0;
+    padding: 100px; 200px
+    background-color: #ffffff;
 }
 
-/* Style for the logo */
+/* Style for the logo */a
 .logo img {
     max-height: 50px;
 }
