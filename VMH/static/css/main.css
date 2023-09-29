@@ -1,43 +1,107 @@
-/* Style for the header */
+/* CSS cho header */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px; 20px
-    background-color: #ffffff;
-}
-
-/* Style for the logo */
-.logo img {
-    max-height: 50px;
-}
-
-/* Style for the title */
-.title h1 {
-    font-size: 24px;
-}
-
-/* Style for buttons */
-.custom-button {
-    margin: 5px;
     padding: 10px 20px;
-    border: none;
-    cursor: pointer;
+    background-color: #FFFFCC;
+    /* border: 0.5px solid #66FFFF; /* Điều chỉnh viền và màu viền thành đỏ */
 }
 
-/* Style for search section */
+
+/* CSS cho logo */
+.logo img {
+    max-height: 100px;
+    margin-top: 20px; /* Điều chỉnh khoảng cách phía trên của nút */
+    margin-right: 20px; /* Điều chỉnh khoảng cách bên phải của nút */
+    margin-bottom: 10px; /* Điều chỉnh khoảng cách phía dưới của nút */
+    margin-left: 10px; /* Điều chỉnh khoảng cách bên trái của nút */
+}
+
+/* CSS cho header-text */
+/* CSS cho header-text */
+/* CSS cho header-text */
+.header-text {
+    margin-left: 20px; /* Khoảng cách bên trái */
+    margin-right: 750px; /* Khoảng cách bên phải */
+    margin-top: 10px; /* Khoảng cách phía trên */
+    margin-bottom: 10px; /* Khoảng cách phía dưới */
+}
+
+
+
+/* CSS cho header-text */
+.header-text h1 {
+    font-size: 40px; /* Kích thước font chữ */
+    font-family: "Arial", sans-serif; /* Font chữ (thay "Arial" bằng font bạn muốn sử dụng) */
+    color: #33CCFF; /* Màu chữ (thay #ff0000 bằng mã màu bạn muốn sử dụng) */
+    font-weight: bold; /* In đậm */
+}
+
+/* ... */
+
+
+/* CSS cho nút có lớp "custom-button" */
+.custom-button {
+    padding: 10px 20px; /* Điều chỉnh khoảng cách bên trong nút */
+    margin-top: 50px; /* Điều chỉnh khoảng cách phía trên của nút */
+    margin-right: 20px; /* Điều chỉnh khoảng cách bên phải của nút */
+    margin-bottom: 10px; /* Điều chỉnh khoảng cách phía dưới của nút */
+    margin-left: 10px; /* Điều chỉnh khoảng cách bên trái của nút */
+    background-color: #006666; /* Điều chỉnh màu nền của nút */
+    color: #ffffff; /* Điều chỉnh màu chữ của nút */
+    border: none; /* Xóa viền */
+    cursor: pointer; /* Biểu tượng con trỏ khi đưa chuột vào nút */
+    font-family: Arial, sans-serif; /* Đổi font chữ */
+    font-size: 18px; /* Điều chỉnh kích thước chữ trên nút */
+    font-weight: bold; /* In đậm chữ */
+}
+
+/* CSS cho nút khi được nhấp */
+.custom-button:hover {
+    background-color: #0000FF; /* Điều chỉnh màu nền khi di chuột vào nút */
+}
+
+
+/* CSS cho phần tử section với class "search" */
 .search {
-    margin: 10px;
+    display: flex; /* Hiển thị các phần tử con trong "search" theo chiều ngang */
+    justify-content: space-between; /* Canh chỉnh các phần tử con theo khoảng cách đều nhau */
+    align-items: center; /* Canh chỉnh các phần tử con theo trục dọc */
+    background-color: #FFFFFF /* Điều chỉnh màu nền của phần tử "search" */
+    padding: 10px 10px; /* Điều chỉnh khoảng cách bên trong nút */
+    margin-top: 30px; /* Điều chỉnh khoảng cách phía trên của nút */
+    margin-right: 100px; /* Điều chỉnh khoảng cách bên phải của nút */
+    margin-bottom: 10px; /* Điều chỉnh khoảng cách phía dưới của nút */
+    margin-left: 10px; /* Điều chỉnh khoảng cách bên trái của nút */
 }
 
-/* Style for clear button */
-.clear-button {
-    background-color: #ccc;
-    color: #000;
-    border: none;
-    cursor: pointer;
-    padding: 5px 10px;
+/* CSS cho label */
+.search label {
+    font-size: 20px; /* Điều chỉnh kích thước font chữ của label */
+    color: #333; /* Điều chỉnh màu của label */
+    margin-right: 10px; /* Điều chỉnh khoảng cách bên phải của label */
 }
+
+/* CSS cho input[type="text"] */
+.search input[type="text"] {
+    flex: 1; /* Điều chỉnh ô nhập văn bản mở rộng để lấp đầy phần còn lại của "search" */
+    padding: 10px 10px; /* Điều chỉnh khoảng cách bên trong ô nhập văn bản */
+    border: 0.5px solid #ccc; /* Điều chỉnh viền và màu viền của ô nhập văn bản */
+    font-size: 18px; /* Điều chỉnh kích thước font chữ của ô nhập văn bản */
+}
+
+/* CSS cho button "Clear" */
+.clear-button {
+    background-color: #007bff; /* Điều chỉnh màu nền của nút "Clear" */
+    color: #fff; /* Điều chỉnh màu chữ của nút "Clear" */
+    padding: 10px 20px; /* Điều chỉnh khoảng cách bên trong nút "Clear" */
+    border: none; /* Xóa viền của nút "Clear" */
+    cursor: pointer; /* Biến con trỏ thành mũi tên khi di chuột vào nút "Clear" */
+    font-size: 18px; /* Điều chỉnh kích thước font chữ của nút "Clear" */
+    margin-left: 10px; /* Điều chỉnh khoảng cách bên trái của nút */
+}
+
 
 /* Style for result section */
 .result {
