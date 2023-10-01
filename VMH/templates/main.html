@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="header-background">
+            <!-- Hình ảnh background -->
+            <img src="{% static 'images/cover.jpg' %}" alt="Background" />
+        </div>
+        <div class="logo">
+            <!-- Hình ảnh logo -->
+            <img src="{% static 'images/logo3.png' %}" alt="Logo" />
+        </div>
+        <div class="header-text">
+            <h1> VN Search </h1>
+        </div>
+    </header>
+
+    <section class="buttons">
+        <button id="updateButton" class="custom-button">Update New Link</button>
+        <button id="mainLinkButton" class="custom-button">Main Link</button>
+        <button id="relatedLinkButton" class="custom-button">Related Link</button>
+        <button id="allLinkButton" class="custom-button">All Link</button>
+        <button id="vhmSearchButton" class="custom-button">VN Search</button>
+        <button id="kvSearchButton" class="custom-button">KBG Search</button>
+        <button id="autoTranslationButton" class="custom-button">Auto_Translation</button>
+    </section>
+
+    <section class="search">
+        <label for="searchText">Search Text: </label>
+        <input type="text" id="searchText" name="searchText">
+        <button id="clearButton">Clear</button>
+    </section>
+
+    <!-- Hiển thị kết quả tìm kiếm -->
+    <section class="results">
+        <ul id="searchResults">
+            <!-- Kết quả tìm kiếm sẽ được hiển thị ở đây -->
+        </ul>
+    </section>
+
+    {% block content  %}
+
+    {% endblock content %}
+
+    <!-- Đặt mã JavaScript tại đây -->
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
