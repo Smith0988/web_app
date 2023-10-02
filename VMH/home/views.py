@@ -5,20 +5,41 @@ from .main import *
 def get_home(request):
     return render(request, 'home/home.html')
 
-def search(request, method):
-    results = []
-    if request.method == 'POST':
-        query = request.POST.get('query', '')
 
-        if method == 'update':
-            # Thực hiện tìm kiếm theo phương thức 'update'
-            results = search_main_link(query)
-        elif method == 'mainlink':
-            # Thực hiện tìm kiếm theo phương thức 'mainlink'
-            results = search_related_link(query)
-        else:
-            results = "Not found"
-        # Xử lý các phương thức tìm kiếm khác ở đây
+from django.http import JsonResponse
 
-    return render(request, 'home/update.html', {'results': results})
 
+def perform_search(searchText, buttonId):
+    if buttonId == "mainLinkButton":
+        result = search_main_article_link(searchText)
+    elif buttonId == "relatedLinkButton":
+        result = search_related_article_link(searchText)
+    elif buttonId == "allLinkButton":
+        result = search_all_article_link(searchText)
+
+    elif buttonId=="vhmSearchButton":
+        result = search_sentence(searchText)
+
+    elif  buttonId=="kvSearchButton":
+        result = searc_kv(searchText)
+    else:
+        result = "Please check button"
+
+    return result
+
+
+
+def search(request):
+    # Lấy giá trị từ ô input "searchText"
+    search_text = request.GET.get('searchText', '')
+
+    # Lấy giá trị từ tham số 'buttonId'
+    button_id = request.GET.get('buttonId', '')
+
+    if search_text:
+        results = perform_search(search_text, button_id)  # Điều này cần thay đổi dựa trên logic tìm kiếm của bạn
+    else:
+        results = "Please input search text"
+
+    # Trả về kết quả dưới dạng JSON
+    return JsonResponse({"buttonId": button_id, "results": results})

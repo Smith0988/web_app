@@ -132,3 +132,8 @@ header {
     color: #333; /* Điều chỉnh màu chữ của textarea */
     border: 0.5px solid #ccc; /* Điều chỉnh viền và màu viền của textarea */
 }
+
+#searchResults {
+    width: 100%;
+    height: 100%; /* Đây là ví dụ, bạn có thể điều chỉnh theo ý muốn */
+}

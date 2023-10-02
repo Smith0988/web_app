@@ -1,0 +1,17 @@
+<!-- results.html -->
+
+<ul id="searchResults">
+  <!-- Kết quả tìm kiếm sẽ được hiển thị ở đây -->
+</ul>
+
+<script>
+  var results = {{ results|safe }};
+  var resultList = document.getElementById("searchResults");
+
+  // Xử lý kết quả và thêm chúng vào danh sách ul
+  for (var i = 0; i < results.length; i++) {
+    var listItem = document.createElement("li");
+    listItem.textContent = results[i];
+    resultList.appendChild(listItem);
+  }
+</script>

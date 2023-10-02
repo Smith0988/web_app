@@ -3,48 +3,51 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #FFFFCC;
-    /* border: 0.5px solid #66FFFF; /* Điều chỉnh viền và màu viền thành đỏ */
+    position: relative;
+    width: 100%; /* Điều chỉnh độ rộng của header tại đây, ví dụ 80% */
+    height: 200px; /* Điều chỉnh chiều dài của header tại đây, ví dụ 100px */
 }
 
+/* CSS cho background */
+.header-background img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Đặt z-index thấp hơn để nó nằm phía sau các phần tử khác */
+}
 
 /* CSS cho logo */
 .logo img {
-    max-height: 100px;
-    margin-top: 20px; /* Điều chỉnh khoảng cách phía trên của nút */
-    margin-right: 20px; /* Điều chỉnh khoảng cách bên phải của nút */
-    margin-bottom: 10px; /* Điều chỉnh khoảng cách phía dưới của nút */
-    margin-left: 10px; /* Điều chỉnh khoảng cách bên trái của nút */
+    width: 100%; /* Đặt chiều rộng của logo là 20% của phần tử chứa nó */
 }
 
-/* CSS cho header-text */
-/* CSS cho header-text */
 /* CSS cho header-text */
 .header-text {
-    margin-left: 20px; /* Khoảng cách bên trái */
-    margin-right: 750px; /* Khoảng cách bên phải */
-    margin-top: 10px; /* Khoảng cách phía trên */
-    margin-bottom: 10px; /* Khoảng cách phía dưới */
+    text-align: left; /* Để căn giữa theo chiều ngang */
+    display: flex; /* Sử dụng flexbox để căn giữa theo chiều dọc */
+    justify-content: center; /* Để căn giữa theo chiều dọc */
+    align-items: center; /* Để căn giữa theo chiều dọc */
+    margin-left: 20px;
+    margin-right: 900px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-
-
-/* CSS cho header-text */
 .header-text h1 {
-    font-size: 40px; /* Kích thước font chữ */
-    font-family: "Arial", sans-serif; /* Font chữ (thay "Arial" bằng font bạn muốn sử dụng) */
-    color: #33CCFF; /* Màu chữ (thay #ff0000 bằng mã màu bạn muốn sử dụng) */
-    font-weight: bold; /* In đậm */
+    font-size: 40px;
+    font-family: "Verdana", sans-serif;
+    color: #FFCC00;
+    font-weight: bold;
 }
 
-/* ... */
 
 
 /* CSS cho nút có lớp "custom-button" */
 .custom-button {
     padding: 10px 20px; /* Điều chỉnh khoảng cách bên trong nút */
-    margin-top: 50px; /* Điều chỉnh khoảng cách phía trên của nút */
+    margin-top: 30px; /* Điều chỉnh khoảng cách phía trên của nút */
     margin-right: 20px; /* Điều chỉnh khoảng cách bên phải của nút */
     margin-bottom: 10px; /* Điều chỉnh khoảng cách phía dưới của nút */
     margin-left: 10px; /* Điều chỉnh khoảng cách bên trái của nút */
@@ -65,15 +68,12 @@ header {
 
 /* CSS cho phần tử section với class "search" */
 .search {
-    display: flex; /* Hiển thị các phần tử con trong "search" theo chiều ngang */
-    justify-content: space-between; /* Canh chỉnh các phần tử con theo khoảng cách đều nhau */
-    align-items: center; /* Canh chỉnh các phần tử con theo trục dọc */
-    background-color: #FFFFFF /* Điều chỉnh màu nền của phần tử "search" */
-    padding: 10px 10px; /* Điều chỉnh khoảng cách bên trong nút */
-    margin-top: 30px; /* Điều chỉnh khoảng cách phía trên của nút */
-    margin-right: 100px; /* Điều chỉnh khoảng cách bên phải của nút */
-    margin-bottom: 10px; /* Điều chỉnh khoảng cách phía dưới của nút */
-    margin-left: 10px; /* Điều chỉnh khoảng cách bên trái của nút */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFFFFF;
+    padding: 10px 10px; /* Padding 2% theo chiều ngang và 2% theo chiều dọc */
+    margin-top: 20px; /* Điều chỉnh khoảng cách phía trên của nút */
 }
 
 /* CSS cho label */
@@ -103,16 +103,37 @@ header {
 }
 
 
-/* Style for result section */
+/* CSS cho result section */
 .result {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin: 10px;
 }
 
-/* Style for result text area */
-#result-text {
+/* CSS cho label "Result" */
+.result label {
+    font-size: 20px; /* Điều chỉnh kích thước font chữ của label */
+    color: #333; /* Điều chỉnh màu của label */
+    margin-right: 10px; /* Điều chỉnh khoảng cách bên phải của label */
+}
+
+/* CSS cho result-text section */
+.result-text {
+    margin: 10px;
+}
+
+/* CSS cho textarea "Result Text" */
+#resultText {
+    width: 95%; /* Điều chỉnh độ rộng của textarea theo 100% chiều rộng */
+    height: 300px; /* Điều chỉnh độ cao của textarea */
+    padding: 10px; /* Điều chỉnh khoảng cách bên trong textarea */
+    background-color: #FFFFFF; /* Điều chỉnh màu nền của textarea */
+    color: #333; /* Điều chỉnh màu chữ của textarea */
+    border: 0.5px solid #ccc; /* Điều chỉnh viền và màu viền của textarea */
+}
+
+#searchResults {
     width: 100%;
-    height: 200px;
-    resize: none;
-    border: 1px solid #000;
-    padding: 5px;
+    height: 300px; /* Đây là ví dụ, bạn có thể điều chỉnh theo ý muốn */
 }

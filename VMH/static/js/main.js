@@ -1,45 +1,32 @@
-document.addEventListener('DOMContentLoaded', function () {
-    document.querySelector('form').addEventListener('submit', function (e) {
-        e.preventDefault(); // Ngăn chặn gửi form mặc định
+// main.js
 
-        const query = document.getElementById('query').value;
+$(document).ready(function() {
+  // Khi bấm vào bất kỳ nút nào
+  $(".custom-button").click(function() {
+    // Lấy id của button
+    var buttonId = $(this).attr("id");
 
-        // Gửi truy vấn AJAX đến view Django
-        fetch('/search/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'X-CSRFToken': getCookie('csrftoken')
-            },
-            body: `query=${encodeURIComponent(query)}`
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Hiển thị kết quả tìm kiếm
-            const resultsList = document.querySelector('ul');
-            resultsList.innerHTML = '';
-            data.results.forEach(result => {
-                const listItem = document.createElement('li');
-                listItem.textContent = result;
-                resultsList.appendChild(listItem);
-            });
-        });
+    // Lấy giá trị từ ô input từ mục "search"
+    var searchText = $("#searchText").val();
+
+    // Gọi API endpoint 'search' để tìm kiếm
+    $.ajax({
+      url: '/search/', // Điều này cần thay đổi nếu bạn đã cấu hình URL khác
+      data: { searchText: searchText, buttonId: buttonId },
+      method: 'GET',
+      success: function(data) {
+        // Hiển thị kết quả từ API lên ô "searchResults"
+        $("#searchResults").val("Search Results: \n" + data.results);
+      },
+      error: function(error) {
+        console.log(error);
+      }
     });
+  });
 
-    // Hàm lấy giá trị của cookie CSRF
-    function getCookie(name) {
-        const cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-            const cookies = document.cookie.split(';');
-            for (let i = 0; i < cookies.length; i++) {
-                const cookie = cookies[i].trim();
-                // Kiểm tra xem cookie có tên là csrfmiddlewaretoken không
-                if (cookie.substring(0, name.length + 1) === name + '=') {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
-            }
-        }
-        return cookieValue;
-    }
+  // Khi bấm vào nút "Clear"
+  $("#clearButton").click(function() {
+    // Xóa nội dung của ô input "Search Text"
+    $("#searchText").val("");
+  });
 });
