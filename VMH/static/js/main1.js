@@ -1,5 +1,3 @@
-// main.js
-
 $(document).ready(function() {
   // Khi bấm vào bất kỳ nút nào
   $(".custom-button").click(function() {
@@ -9,11 +7,77 @@ $(document).ready(function() {
     // Lấy giá trị từ ô input từ mục "search"
     var searchText = $("#searchText").val();
 
-    // Hiển thị id của button và giá trị của ô input trong ô kết quả
-    var currentResults = $("#searchResults").val(); // Lấy giá trị hiện tại của ô kết quả
-    var newResults = "Button ID: " + buttonId + "\nSearch Text: " + searchText;
+    // Gọi API endpoint 'search' để tìm kiếm
+    $.ajax({
+      url: '/search/',
+      data: { searchText: searchText, buttonId: buttonId },
+      method: 'GET',
+      success: function(data) {
 
-    // Nối giá trị mới vào giá trị hiện tại của ô kết quả
-    $("#searchResults").val(currentResults + "\n" + newResults);
+        var resultsContainer = $("#searchResults_1");
+        resultsContainer.empty(); // Xóa nội dung hiện tại
+
+        if (buttonId === "mainLinkButton" || buttonId === "relatedLinkButton" || buttonId === "allLinkButton") {
+          // Nếu buttonID là "mainLinkButton", thì gắn hyperlink
+          if (data.results.length > 2) {
+              for (var i = 0; i < data.results.length; i += 2) {
+                var title = data.results[i];
+                var link = data.results[i + 1];
+
+                // Tạo một phần tử a (hyperlink) và thiết lập các thuộc tính
+                var linkElement = $("<a>");
+                linkElement.attr("href", link);
+                linkElement.text(title);
+
+                // Thêm hyperlink vào container kết quả
+                resultsContainer.append(linkElement);
+                resultsContainer.append("<br>"); // Thêm dòng mới sau mỗi kết quả
+              }
+          } else {
+                 resultsContainer.html( data.results);
+             }
+        } else if (buttonId === "vhmSearchButton") {
+
+          if (data.results.length > 1) {
+              for (var i = 0; i < data.results.length; i += 1) {
+                // Thêm hyperlink vào container kết quả
+                resultsContainer.append(data.results[i]);
+                resultsContainer.append("<br>"); // Thêm dòng mới sau mỗi kết quả
+              }
+          } else {
+                 resultsContainer.html( data.results);
+          }
+
+          // Thêm điều kiện cho buttonId là "relatedLinkButton"
+          // Xử lý tương tự như trên, nếu cần
+        } else if (buttonId === "kvSearchButton") {
+
+              for (var i = 0; i < data.results.length; i += 1) {
+                // Thêm hyperlink vào container kết quả
+                resultsContainer.append(data.results[i]);
+                resultsContainer.append("<br>"); // Thêm dòng mới sau mỗi kết quả
+              }
+
+
+          // Thêm điều kiện cho buttonId là "relatedLinkButton"
+          // Xử lý tương tự như trên, nếu cần
+        } else {
+          // Nếu không phải "mainLinkButton", hiển thị data.results bình thường
+          resultsContainer.html( data.results);
+        }
+
+
+      },
+      error: function(error) {
+        console.log(error);
+      }
+    });
+  });
+
+  // Khi bấm vào nút "Clear"
+  $("#clearButton").click(function() {
+    // Xóa nội dung của ô input "Search Text"
+    $("#searchText").val("");
+    $("#searchResults_1").html("");
   });
 });

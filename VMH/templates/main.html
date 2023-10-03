@@ -6,7 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="icon" href="/favicon.ico">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{% static 'js/main.js' %}"></script> <!-- Liên kết với tệp JavaScript của bạn -->
 </head>
@@ -21,7 +22,7 @@
             <img src="{% static 'images/logo3.png' %}" alt="Logo" />
         </div>
         <div class="header-text">
-            <h1> VN Search </h1>
+            <h1> </h1>
         </div>
     </header>
 
@@ -40,14 +41,17 @@
         <button id="clearButton">Clear</button>
     </section>
 
-    <!-- Hiển thị kết quả tìm kiếm -->
-    <section class="results">
-        <textarea id="searchResults"></textarea>
+    <h3 class="result-heading">Search Result:</h3>
+
+    <section class="results_1">
+        <div id="searchResults_1"></div>
     </section>
 
     {% block content  %}
 
     {% endblock content %}
+
+
 
 </body>
 </html>

@@ -7,13 +7,14 @@ def search_main_article_link(english_link):
     result_link = []
     vietnamese_link = find_vietnamese_link_1(english_link)
     if "Can not" in vietnamese_link:
-        return vietnamese_link
+        result_link.append(vietnamese_link)
+        return result_link
     else:
         result_link.append(get_en_article_title(english_link))
         result_link.append(english_link)
         result_link.append(get_vn_article_title(vietnamese_link))
         result_link.append(vietnamese_link)
-        result_link = "\n".join(result_link)
+        #result_link = "\n".join(result_link)
         return result_link
 
 
@@ -25,23 +26,28 @@ def search_related_article_link(english_link):
             return "Please check url"
 
     result_text = []
-    result_text.append("Related reports:")
-    result_text.append("Bài liên quan:")
-
     english_text, vietnam_link, english_link = find_vietnamese_link(english_link)
     if english_link:
+        result_text.append("Related reports:")
+        result_text.append("Related reports:")
+        result_text.append("Bài liên quan:")
+        result_text.append("Bài liên quan:")
         for i in range(len(english_link)):
             if "en.minghui.org" in english_link[i]:
                 result_text.append(get_en_article_title(english_link[i]))
                 result_text.append(english_link[i])
-                result_text.append(get_vn_article_title(vietnam_link[i]))
-                result_text.append(vietnam_link[i])
-                result_text.append("      ")
-        result_text_final = "\n".join(result_text)
+                if "vn.minghui.org" in vietnam_link[i]:
+                    result_text.append(get_vn_article_title(vietnam_link[i]))
+                    result_text.append(vietnam_link[i])
+                else:
+                    result_text.append("Can not found Vietnamese Link")
+                    result_text.append(vietnam_link[i])
+                #result_text.append("      ")
+        #result_text_final = "\n".join(result_text)
     else:
-        result_text_final = "Have no related link in article"
+        result_text.append("Have no related link in article")
 
-    return result_text_final
+    return result_text
 
 def search_all_article_link(english_link):
     # Xóa nội dung hiển thị kết quả
@@ -49,21 +55,27 @@ def search_all_article_link(english_link):
     if not re.match(pattern, english_link):
         return "Please check url"
     result_text = []
-    result_text.append("Related reports:")
-    result_text.append("Bài liên quan:")
     vietnam_link, english_link_list = find_vietnamese_link_2(english_link)
     if english_link_list:
+        result_text.append("Related reports:")
+        result_text.append("Related reports:")
+        result_text.append("Bài liên quan:")
+        result_text.append("Bài liên quan:")
         for i in range(len(english_link_list)):
             if "en.minghui.org" in english_link_list[i]:
                 result_text.append(get_en_article_title(english_link_list[i]))
                 result_text.append(english_link_list[i])
-                result_text.append(get_vn_article_title(vietnam_link[i]))
-                result_text.append(vietnam_link[i])
-                result_text.append("      ")
-        result_text_final = "\n".join(result_text)
+                if "vn.minghui.org" in vietnam_link[i]:
+                    result_text.append(get_vn_article_title(vietnam_link[i]))
+                    result_text.append(vietnam_link[i])
+                else:
+                    result_text.append("Can not found Vietnamese Link")
+                    result_text.append(vietnam_link[i])
+                #result_text.append("      ")
+        #result_text_final = "\n".join(result_text)
     else:
-        result_text_final = "Have no related link in article"
-    return result_text_final
+        result_text.append("Have no related link in article")
+    return result_text
 
 
 
@@ -118,30 +130,33 @@ def translation(user_input):
 def searc_kv(user_input):
     result = []
     if not user_input:
-        return "Please input search text:"
+        result.append("Please input search text:")
+        return result
     else:
         english_text_in, vietname_text_in, in_text, vietname_link = find_translation(user_input)
         #if not vietname_link:
             #return "Can not found Vietnam Linkeqrntr"
         if not english_text_in:
-            return "Can not found"
+            result.append("Can not found")
+            return result
         result.append(english_text_in)
         result.append("=================================================================================")
         result.append(vietname_text_in)
         result.append("=================================================================================")
         for i in range(len(vietname_link)):
             result.append(vietname_link[i])
-        result = map(str, result)
-        final_result = "\n".join(result)
-    return final_result
+    return result
 
 def search_sentence(user_input):
+    result = []
     if not user_input:
-        return "Please input text"
+        result.append("Please input text")
+        return result
     else:
         search_result = find_sentence(user_input)
         if not search_result:
-            return "Can not found"
-        result = "\n".join(search_result)
+            result.append("Can not found")
+            return result
+        result = search_result
     return result
 

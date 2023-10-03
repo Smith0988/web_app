@@ -31,6 +31,7 @@ def perform_search(searchText, buttonId):
 
 def search(request):
     # Lấy giá trị từ ô input "searchText"
+    results = []
     search_text = request.GET.get('searchText', '')
 
     # Lấy giá trị từ tham số 'buttonId'
@@ -39,7 +40,7 @@ def search(request):
     if search_text:
         results = perform_search(search_text, button_id)  # Điều này cần thay đổi dựa trên logic tìm kiếm của bạn
     else:
-        results = "Please input search text"
+        results.append("Please input search text")
 
     # Trả về kết quả dưới dạng JSON
     return JsonResponse({"buttonId": button_id, "results": results})

@@ -445,8 +445,8 @@ def find_translation(english_sentence):
                     check_point = True
             else:
                 if "vi.falundafa.org" in english_text[i] or "vn.minghui.org" in english_text[i]:
-                    vietname_link.append("Title: " + vietnamese_text[i])
-                    vietname_link.append("Link TV: " + english_text[i])
+                    vietname_link.append(vietnamese_text[i])
+                    vietname_link.append(english_text[i])
                     break
 
         if english_list:
