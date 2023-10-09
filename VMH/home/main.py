@@ -3,6 +3,38 @@ from .write_to_world import *
 
 waiting_text = "please wait, under processing..."
 
+
+
+def update_new_link():
+
+
+    result = []
+    get_new_link_vn(article_url_GCT)
+    get_new_link_en(file_new_gct_vn)
+    add_link_to_csv(file_new_gct_en, file_new_gct_vn)
+
+    get_new_link_vn(article_url_tdth)
+    get_new_link_en(file_new_gct_vn)
+    add_link_to_csv(file_new_gct_en, file_new_gct_vn)
+
+    get_new_link_vn(article_url_new)
+    get_new_link_en(file_new_gct_vn)
+    add_link_to_csv(file_new_gct_en, file_new_gct_vn)
+
+    get_new_link_vn(article_url_ddbl)
+    get_new_link_en(file_new_gct_vn)
+    add_link_to_csv(file_new_gct_en, file_new_gct_vn)
+
+    get_new_link_vn(article_url_tguh)
+    get_new_link_en(file_new_gct_vn)
+    add_link_to_csv(file_new_gct_en, file_new_gct_vn)
+
+    result.append("Update Successful")
+
+    return result
+
+
+
 def search_main_article_link(english_link):
     result_link = []
     vietnamese_link = find_vietnamese_link_1(english_link)
@@ -19,13 +51,13 @@ def search_main_article_link(english_link):
 
 
 def search_related_article_link(english_link):
-
+    result_text = []
     # Xóa nội dung hiển thị kết quả
     pattern = r"^(http:|https:).*\.html$"
     if not re.match(pattern, english_link):
-            return "Please check url"
+            result_text.append("Please check url")
+            return result_text
 
-    result_text = []
     english_text, vietnam_link, english_link = find_vietnamese_link(english_link)
     if english_link:
         result_text.append("Related reports:")
@@ -50,17 +82,17 @@ def search_related_article_link(english_link):
     return result_text
 
 def search_all_article_link(english_link):
+    result_text = []
     # Xóa nội dung hiển thị kết quả
     pattern = r"^(http:|https:).*\.html$"
     if not re.match(pattern, english_link):
-        return "Please check url"
-    result_text = []
+            result_text.append("Please check url")
+            return result_text
+
     vietnam_link, english_link_list = find_vietnamese_link_2(english_link)
     if english_link_list:
-        result_text.append("Related reports:")
-        result_text.append("Related reports:")
-        result_text.append("Bài liên quan:")
-        result_text.append("Bài liên quan:")
+        result_text.append("Các link có trong báo cáo:")
+        result_text.append("Các link có trong báo cáo:")
         for i in range(len(english_link_list)):
             if "en.minghui.org" in english_link_list[i]:
                 result_text.append(get_en_article_title(english_link_list[i]))

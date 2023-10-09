@@ -23,7 +23,7 @@ def perform_search(searchText, buttonId):
     elif  buttonId=="kvSearchButton":
         result = searc_kv(searchText)
     else:
-        result = "Please check button"
+        result = update_new_link()
 
     return result
 
