@@ -71,7 +71,28 @@ $(document).ready(function() {
 
           // Thêm điều kiện cho buttonId là "relatedLinkButton"
           // Xử lý tương tự như trên, nếu cần
-        } else {
+        } else if (buttonId === "hnSearchButton") {
+
+              if (data.results.length > 2) {
+                  for (var i = 0; i < data.results.length; i += 1) {
+                    // Thêm hyperlink vào container kết quả
+                    resultsContainer.append(data.results[i]);
+                    resultsContainer.append("<br>"); // Thêm dòng mới sau mỗi kết quả
+                  }
+                 resultsContainer.append("<br>");
+                 var linkElement = $("<a>");
+                 linkElement.attr("href", data.results[5]);
+                 linkElement.text(data.results[4]);
+                 resultsContainer.append(linkElement);
+                 resultsContainer.append("<br>");
+
+              } else {
+                     resultsContainer.html( data.results);
+              }
+
+          // Thêm điều kiện cho buttonId là "relatedLinkButton"
+          // Xử lý tương tự như trên, nếu cần
+        }  else {
           // Nếu không phải "mainLinkButton", hiển thị data.results bình thường
           resultsContainer.html( data.results);
         }

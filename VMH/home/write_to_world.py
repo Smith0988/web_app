@@ -28,6 +28,7 @@ csv_filename = resource_path("data\link_eng_vn_gct.csv")
 
 csv_filename_dic = resource_path("data\dic_eng_vn_data.csv")
 kv_data = resource_path("data\KV_data.csv")
+HN_data = resource_path("data\HN_data.txt")
 
 #csv_filename_dic = "C:\\Users\\Chung Duong\\Documents\\1.Web_App\\1.First_Project\\web_app\\VMH\\VMH\\data\\dic_eng_vn_data.csv"
 #kv_data = "C:\\Users\\Chung Duong\\Documents\\1.Web_App\\1.First_Project\\web_app\\VMH\\VMH\\data\\KV_data.csv"
@@ -484,6 +485,33 @@ def find_sentence(english_sentence):
     except Exception as e:
         print(f"Đã xảy ra lỗi: {str(e)}")
         return e
+
+
+def search_HN(sentence):
+    # Đọc nội dung từ file và gán thành một danh sách (list)
+    with open(HN_data, 'r', encoding='utf-8') as file:
+        file_data_list = file.read().splitlines()
+
+    results = []  # Một từ điển để lưu kết quả tìm kiếm
+    check_point = False
+    first_index = 0
+    # Duyệt qua danh sách các dòng từ file
+    for index in range(len(file_data_list)):
+        line = file_data_list[index]
+        if sentence in line:
+            check_point = True
+        if not check_point and ("vi.falundafa.org" in line or "vn.minghui.org" in line):
+            first_index = index
+        if check_point and ("vi.falundafa.org" in line or "vn.minghui.org" in line):
+            last_index = index
+            break
+    if check_point:
+        for i in range(first_index + 1, last_index + 1):
+            results.append(file_data_list[i])
+        return results
+    else:
+        results.append("Can not found in data base")
+        return results
 
 # Đường dẫn đến bài báo
 # url = "https://en.minghui.org/html/articles/2023/7/15/210315.html"

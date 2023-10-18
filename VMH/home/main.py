@@ -192,3 +192,11 @@ def search_sentence(user_input):
         result = search_result
     return result
 
+def search_HN_data(user_input):
+    result = []
+    if not user_input:
+        result.append("Please input text")
+        return result
+    else:
+        result = search_HN(user_input)
+    return result

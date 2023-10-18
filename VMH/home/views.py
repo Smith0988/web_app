@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .main import *
 
+
 def get_home(request):
     return render(request, 'home/home.html')
 
@@ -17,16 +18,19 @@ def perform_search(searchText, buttonId):
     elif buttonId == "allLinkButton":
         result = search_all_article_link(searchText)
 
-    elif buttonId=="vhmSearchButton":
+    elif buttonId == "vhmSearchButton":
         result = search_sentence(searchText)
 
-    elif  buttonId=="kvSearchButton":
+    elif buttonId == "kvSearchButton":
         result = searc_kv(searchText)
+
+    elif buttonId == "hnSearchButton":
+        result = search_HN_data(searchText)
+
     else:
         result = update_new_link()
 
     return result
-
 
 
 def search(request):
