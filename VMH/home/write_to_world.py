@@ -95,7 +95,11 @@ def get_related_link(url):
                             related_links.append(link['href'])
 
             if valid_paragraphs:
-                return valid_paragraphs, related_links
+                unique_links = []
+                for link in related_links:
+                    if link not in unique_links:
+                        unique_links.append(link)
+                return valid_paragraphs, unique_links
             else:
                 return [], []
         else:
@@ -522,3 +526,4 @@ def search_HN(sentence):
 # write_en_article_to_doc(url)
 # read_paragraph_in_word(title_name ,url)
 # print(get_en_article_title(url))
+

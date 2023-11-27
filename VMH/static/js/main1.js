@@ -30,6 +30,7 @@ $(document).ready(function() {
                 linkElement.text(title);
 
                 // Thêm hyperlink vào container kết quả
+                resultsContainer.append("<br>");
                 resultsContainer.append(linkElement);
                 resultsContainer.append("<br>"); // Thêm dòng mới sau mỗi kết quả
               }

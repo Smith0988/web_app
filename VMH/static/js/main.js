@@ -30,6 +30,7 @@ $(document).ready(function() {
                 linkElement.text(title);
 
                 // Thêm hyperlink vào container kết quả
+                resultsContainer.append("<br>");
                 resultsContainer.append(linkElement);
                 resultsContainer.append("<br>"); // Thêm dòng mới sau mỗi kết quả
               }
@@ -74,15 +75,20 @@ $(document).ready(function() {
         } else if (buttonId === "hnSearchButton") {
 
               if (data.results.length > 2) {
-                  for (var i = 0; i < data.results.length; i += 1) {
+                  for (var i = 0; i < data.results.length - 2; i += 1) {
                     // Thêm hyperlink vào container kết quả
                     resultsContainer.append(data.results[i]);
                     resultsContainer.append("<br>"); // Thêm dòng mới sau mỗi kết quả
                   }
+                 // Lấy index của phần tử cuối cùng
+                 var lastIndex = data.results.length - 1;
+                 // Lấy index của phần tử trước cuối cùng
+                 var secondToLastIndex = data.results.length - 2;
+
                  resultsContainer.append("<br>");
                  var linkElement = $("<a>");
-                 linkElement.attr("href", data.results[5]);
-                 linkElement.text(data.results[4]);
+                 linkElement.attr("href", data.results[lastIndex]);
+                 linkElement.text(data.results[secondToLastIndex]);
                  resultsContainer.append(linkElement);
                  resultsContainer.append("<br>");
 
